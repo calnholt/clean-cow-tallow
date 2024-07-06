@@ -2,13 +2,13 @@
   position: relative;
   width: 20%;
   padding: 0px 40px;
+  background: white;
 }
 #gallery .gallery-container {
   position: relative;
 }
 #gallery .gallery {
   height: 510px;
-  background: white;
 }
 #gallery .gallery img {
   width: 100%;
