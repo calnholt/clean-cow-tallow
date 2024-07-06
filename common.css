@@ -1,0 +1,54 @@
+body {
+  font-family: "Original Surfer", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  background-color: white;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><defs><pattern id='cow-splotches' patternUnits='userSpaceOnUse' width='200' height='200'><rect width='200' height='200' fill='white'/><path d='M20,20 C10,30 30,40 20,50 C10,60 40,60 50,50 C60,40 50,30 40,20 C30,10 20,10 20,20' fill='black'/><path d='M100,100 Q90,120 110,130 Q130,140 120,120 Q110,100 100,100' fill='black'/></pattern></defs><rect width='100%' height='100%' fill='url(%23cow-splotches)'/></svg>");
+  background-size: cover;
+  margin-bottom: 200px;
+  overflow-x: auto;
+}
+.header-spacer {
+  height: 300px;
+}
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: white;
+  z-index: 1000;
+  width: 100%;
+}
+#logo > img {
+  transition: width 0.1s linear;
+  width: 30%;
+  max-width: 500px;
+}
+.shrink {
+  width: 15% !important;
+}
+#expansion-panel {
+  padding: 10px;
+  height: fit-content;
+}
+/* iphone (?) */
+@media (max-width: 390px) {
+  #logo img {
+    width: 100vw;
+  }
+  #expansion-panel {
+    width: 700px;
+    background-color: red;
+  }
+}
+@media (min-width: 900px) {
+  #expansion-panel {
+    width: 500px;
+  }
+}
+.container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,30 @@
+#expansion-panel .panel {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+#expansion-panel .panel-header {
+  background-color: #f1f1f1;
+  font-weight: 900;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.1s ease-in-out;
+}
+#expansion-panel .panel-header:hover {
+  background-color: white;
+}
+#expansion-panel .panel-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  transition: max-height 0.2s ease-out, padding 0.2s ease-out;
+  cursor: pointer;
+  white-space: pre-wrap;
+  background: #ffffffe8
+}
+#expansion-panel .panel-content.open {
+  padding: 10px;
+  transition: max-height 0.2s ease-in, padding 0.2s ease-in;
+}

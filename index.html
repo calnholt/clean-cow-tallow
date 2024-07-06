@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <script src="gallery/gallery.js"></script>
+    <script src="expansion-panel/expansion-panel.js"></script>
+    <script src="constants.js"></script>
+    <link rel="stylesheet" href="common.css">
+    </link>
+    <link rel="stylesheet" href="gallery/gallery.css">
+    </link>
+    <link rel="stylesheet" href="expansion-panel/expansion-panel.css">
+    </link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <title>Clean Cow Tallow</title>
+</head>
+
+<body>
+    <div id="logo">
+        <img class="logo" src="./0.png" />
+    </div>
+    <div class="header-spacer"></div>
+    <div class="container">
+        <div id="gallery"></div>
+        <div id="expansion-panel"></div>
+    </div>
+    <script>
+        main();
+        createGallery();
+        createExpansionPanel(FAQ.TITLES, FAQ.CONTENTS);
+    </script>
+</body>
+
+</html>
