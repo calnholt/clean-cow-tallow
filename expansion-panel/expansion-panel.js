@@ -1,9 +1,13 @@
-createExpansionPanel = (titles, contents) => {
+createExpansionPanel = (title, titles, contents) => {
   const parent = document.getElementById('expansion-panel');
   if (!parent) {
     console.error('cannot find required element with id "gallery"');
     return;
   }
+  const titleContainer = document.createElement('h1');
+  titleContainer.textContent = title;
+  titleContainer.style.textAlign = 'center';
+  parent.append(titleContainer);
   titles.forEach((title, i) => {
     const expContainer = document.createElement('div');
     expContainer.classList.add('panel');
