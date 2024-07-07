@@ -1,9 +1,12 @@
 #gallery {
   position: relative;
-  width: 20%;
+  width: 100%;
   padding: 0px 40px;
   background: white;
   max-width: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #gallery .gallery-container {
   position: relative;
@@ -16,7 +19,6 @@
 #gallery .gallery img {
   width: 100%;
   border-radius: 20px;
-  position: absolute;
 }
 #gallery .buttons {
   position: absolute;

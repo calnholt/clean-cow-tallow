@@ -133,11 +133,11 @@ body {
 }
 @media (min-width: 1400px) {
   .header-spacer {
-    height: 230px;
+    height: 280px;
   }
 }
 @media (max-width: 1399px) {
   .header-spacer {
-    height: 180px;
+    height: 230px;
   }
 }

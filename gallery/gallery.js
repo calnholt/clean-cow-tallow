@@ -7,7 +7,6 @@ const images = [
 let currentIndex = 0;
 let isAnimating = false;
 let activeImage;
-let inactiveImage;
 
 createGallery = () => {
   const parent = document.getElementById('gallery');
@@ -24,12 +23,8 @@ createGallery = () => {
 
   const activeImg = document.createElement('img');
   activeImg.src = images[0];
-  const inactiveImg = document.createElement('img');
-  inactiveImg.src = images[1];
-  inactiveImg.classList.add('hidden');
 
   imgContainer.append(activeImg);
-  imgContainer.append(inactiveImg);
 
   const btnContainer = document.createElement('div');
   btnContainer.classList.add('buttons');
@@ -68,9 +63,7 @@ createGallery = () => {
 
   parent.append(galleryContainer);
 
-
   activeImage = activeImg;
-  inactiveImage = inactiveImg;
 
   prevBtn.addEventListener('click', () => {
     if (isAnimating) {
@@ -92,10 +85,8 @@ createGallery = () => {
 function switchImage(newIndex) {
   isAnimating = true;
   activeImage.src = images[currentIndex];
-  inactiveImage.src = images[newIndex];
 
   activeImage.style.transition = 'opacity 0.3s';
-  inactiveImage.style.transition = 'opacity 0.3s';
 
   const nodes = document.getElementsByClassName('btn');
   let i = 0;
@@ -109,20 +100,13 @@ function switchImage(newIndex) {
     i++;
   }
 
-  requestAnimationFrame(() => {
-      inactiveImage.style.display = 'unset';
-      activeImage.style.opacity = '0';
-      inactiveImage.style.opacity = '1';
-  });
+  activeImage.style.opacity = '0';
 
-  // a little janky :3
   setTimeout(() => {
-      activeImage.src = images[newIndex];
-      activeImage.style.transition = 'unset';
-      activeImage.style.opacity = '1';
-      inactiveImage.style.display = 'hidden';
-      inactiveImage.style.opacity = '0';
-      currentIndex = newIndex;
-      isAnimating = false;
+    activeImage.src = images[newIndex];
+    activeImage.style.opacity = '1';
+    currentIndex = newIndex;
+    isAnimating = false;
   }, 200);
+
 }
