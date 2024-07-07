@@ -39,6 +39,18 @@ body {
 .shrink {
   width: 15% !important;
 }
+#intro {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#intro div {
+  font-size: 20px;
+  width: 840px;
+  text-align: center;
+  padding: 10px;
+}
 #expansion-panel {
   padding: 10px;
   height: fit-content;
@@ -62,12 +74,23 @@ body {
   display: flex;
   justify-content: center;
 }
+#about {
+  width: 100%;
+}
 #about h1 {
   text-align: center;
 }
-#about div {
-  padding: 0px 10px 30px 10px;
+#about > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#about > div > div {
   line-height: 30px;
+  max-width: 600px;
+  padding: 0px 10px 30px 10px;
+  text-align: justify;
+
 }
 /* iphone (?) */
 @media (max-width: 899px) {
