@@ -67,6 +67,7 @@ body {
 }
 #about div {
   padding: 0px 10px 30px 10px;
+  line-height: 30px;
 }
 /* iphone (?) */
 @media (max-width: 899px) {
