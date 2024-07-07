@@ -76,6 +76,7 @@ body {
 }
 #about {
   width: 100%;
+  padding-top: 50px;
 }
 #about h1 {
   text-align: center;
