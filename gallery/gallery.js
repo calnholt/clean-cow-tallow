@@ -55,7 +55,9 @@ createGallery = () => {
     }
     imageBtnContainer.append(imageBtn);
     imageBtn.addEventListener('click', () => {
-      switchImage(i);
+      if (currentIndex !== i) {
+        switchImage(i);
+      }
     });
   }
   btnContainer.append(imageBtnContainer);

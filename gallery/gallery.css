@@ -33,6 +33,8 @@
   cursor: pointer;
   border-radius: 50%;
   font-weight: 600;
+  height: 32px;
+  width: 32px;
 }
 #gallery .buttons .image-btn-container {
   display: flex;
