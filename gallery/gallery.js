@@ -1,7 +1,7 @@
 const images = [
-  "./2.jpeg",
-  "./3.jpeg",
-  "./4.jpeg",
+  "./images/photo-2.jpeg",
+  "./images/photo-1.jpeg",
+  "./images/photo-3.jpeg",
 ];
 
 let currentIndex = 0;
@@ -23,9 +23,9 @@ createGallery = () => {
   imgContainer.classList.add('gallery');
 
   const activeImg = document.createElement('img');
-  activeImg.src = './2.jpeg';
+  activeImg.src = images[0];
   const inactiveImg = document.createElement('img');
-  inactiveImg.src = './3.jpeg';
+  inactiveImg.src = images[1];
   inactiveImg.classList.add('hidden');
 
   imgContainer.append(activeImg);
@@ -43,6 +43,22 @@ createGallery = () => {
   prevBtn.textContent = '<';
 
   btnContainer.append(prevBtn);
+
+  const imageBtnContainer = document.createElement('div');
+  imageBtnContainer.classList.add('image-btn-container');
+
+  for (let i = 0; i < images.length; i++) {
+    const imageBtn = document.createElement('div');
+    imageBtn.classList.add('btn');
+    if (i === 0) {
+      imageBtn.classList.add('selected');
+    }
+    imageBtnContainer.append(imageBtn);
+    imageBtn.addEventListener('click', () => {
+      switchImage(i);
+    });
+  }
+  btnContainer.append(imageBtnContainer);
   btnContainer.append(nextBtn);
 
   galleryContainer.append(imgContainer);
@@ -78,6 +94,18 @@ function switchImage(newIndex) {
 
   activeImage.style.transition = 'opacity 0.3s';
   inactiveImage.style.transition = 'opacity 0.3s';
+
+  const nodes = document.getElementsByClassName('btn');
+  let i = 0;
+  for (const node of nodes) {
+    if (i === newIndex) {
+      node.classList.add('selected');
+    }
+    else {
+      node.classList.remove('selected');
+    }
+    i++;
+  }
 
   requestAnimationFrame(() => {
       inactiveImage.style.display = 'unset';
