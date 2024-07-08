@@ -81,10 +81,10 @@ createGallery = (IMAGES) => {
   image.addEventListener('transitionend', () => {
     const image = getImage();
     if (image.style.opacity === '0') {
-      requestAnimationFrame(() => {
-        image.src = IMAGES[getCurrentIndex()];
-      })
       image.style.opacity = '1';
+      setTimeout(() => {
+        image.src = IMAGES[getCurrentIndex()];
+      }, 1)
     }
     else {
       image.style.transition = null;
