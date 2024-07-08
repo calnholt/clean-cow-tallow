@@ -81,7 +81,9 @@ createGallery = (IMAGES) => {
   image.addEventListener('transitionend', () => {
     const image = getImage();
     if (image.style.opacity === '0') {
-      image.src = IMAGES[getCurrentIndex()];
+      requestAnimationFrame(() => {
+        image.src = IMAGES[getCurrentIndex()];
+      })
       image.style.opacity = '1';
     }
     else {
