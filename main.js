@@ -15,3 +15,6 @@ function goToInstagram() {
 function goToEtsy() {
     window.open('http://cleancowtallow.etsy.com/', '_blank').focus();
 }
+function goToFacebook() {
+    window.open('https://www.facebook.com/profile.php?id=61562362583371', '_blank').focus();
+}
