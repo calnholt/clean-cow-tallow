@@ -3,6 +3,7 @@ const TRANSITION = 'opacity 0.15s';
 
 // creates the gallery element
 createGallery = (IMAGES) => {
+  preloadImages(IMAGES);
   // find and use the existing element with id of 'gallery' to hold the gallery
   const parent = document.getElementById('gallery');
   if (!parent) {
@@ -55,6 +56,7 @@ createGallery = (IMAGES) => {
       }
     });
   }
+
   btnContainer.append(imageBtnContainer);
   btnContainer.append(nextBtn);
 
@@ -85,6 +87,17 @@ createGallery = (IMAGES) => {
     else {
       image.style.transition = null;
     }
+  });
+}
+
+// preloads the images so they render faster
+preloadImages = (urls) => {
+  urls.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+    img.onerror = () => {
+      console.error(`Failed to load image: ${url}`);
+    };
   });
 }
 
