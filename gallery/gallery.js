@@ -78,12 +78,14 @@ createGallery = () => {
   });
 
   _activeImage.addEventListener('transitionend', () => {
-    _isAnimating = _activeImage.style.opacity === '0';
     if (_activeImage.style.opacity === '0') {
       _activeImage.src = images[_currentIndex];
+      _activeImage.style.opacity = '1';
     }
-    _activeImage.style.opacity = '1';
-  })
+    else {
+      _isAnimating = false;
+    }
+  });
 
 }
 
@@ -93,9 +95,7 @@ function switchImage(newIndex) {
   }
   _isAnimating = true;
   _currentIndex = newIndex;
-
   _activeImage.style.transition = 'opacity 0.3s';
-
   const nodes = document.getElementsByClassName('btn');
   let i = 0;
   for (const node of nodes) {
