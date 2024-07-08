@@ -19,8 +19,7 @@ body {
 }
 #logo > img {
   transition: width 0.1s linear;
-  width: 30%;
-  max-width: 500px;
+  width: 500px;
 }
 #socials-container {
   display: flex;
@@ -117,6 +116,9 @@ body {
   margin-left: 8px;
   height: 20px;
 }
+.header-spacer {
+  height: 280px;
+}
 /* iphone (?) */
 @media (max-width: 899px) {
   #logo img {
@@ -168,10 +170,5 @@ body {
 @media (min-width: 1400px) {
   .header-spacer {
     height: 280px;
-  }
-}
-@media (max-width: 1399px) {
-  .header-spacer {
-    height: 230px;
   }
 }
