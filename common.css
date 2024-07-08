@@ -93,20 +93,21 @@ body {
 
 }
 #shop-now {
-  background: white;
+  background: #b9f374;
   position: fixed;
   bottom: 40px;
   right: 10px;
   z-index: 100000;
-  border: 1px solid #e4e4e4;
+  border: 3px solid black;
   padding: 17px;
   border-radius: 50px;
   cursor: pointer;
   transition: .1s ease-in-out;
   font-weight: 900;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 #shop-now:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 #shop-now div {
   display: flex;
