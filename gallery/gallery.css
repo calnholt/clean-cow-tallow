@@ -10,6 +10,7 @@
 }
 #gallery .gallery-container {
   position: relative;
+  width: 100%;
 }
 #gallery .gallery {
   height: 510px;
