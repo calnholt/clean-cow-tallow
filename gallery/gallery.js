@@ -79,7 +79,9 @@ createGallery = () => {
 
   _activeImage.addEventListener('transitionend', () => {
     _isAnimating = _activeImage.style.opacity === '0';
-    _activeImage.src = images[_currentIndex];
+    if (_activeImage.style.opacity === '0') {
+      _activeImage.src = images[_currentIndex];
+    }
     _activeImage.style.opacity = '1';
   })
 
@@ -90,7 +92,6 @@ function switchImage(newIndex) {
     return;
   }
   _isAnimating = true;
-  _activeImage.src = images[_currentIndex];
   _currentIndex = newIndex;
 
   _activeImage.style.transition = 'opacity 0.3s';
