@@ -81,11 +81,11 @@ createGallery = (IMAGES) => {
   image.addEventListener('transitionend', () => {
     const image = getImage();
     if (image.style.opacity === '0') {
-      image.style.display = 'none';
       image.src = IMAGES[getCurrentIndex()];
+      image.style.opacity = '0';
       setTimeout(() => {
         image.style.opacity = '1';
-      }, 10)
+      }, 50)
     }
     else {
       image.style.transition = null;
