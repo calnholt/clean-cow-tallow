@@ -1,16 +1,9 @@
-const images = [
-  "./images/photo-3.jpeg",
-  "./images/photo-2.jpeg",
-  "./images/photo-1.jpeg",
-  "./images/product-1.jpeg",
-  "./images/product-2.jpeg",
-];
+const IMAGE_ID = 'gallery-image';
+const TRANSITION = 'opacity 0.3s';
 
-let _currentIndex = 0;
-let _isAnimating = false;
-let _activeImage;
-
-createGallery = () => {
+// creates the gallery element
+createGallery = (IMAGES) => {
+  // find and use the existing element with id of 'gallery' to hold the gallery
   const parent = document.getElementById('gallery');
   if (!parent) {
     console.error('cannot find required element with id "gallery"');
@@ -23,10 +16,13 @@ createGallery = () => {
   const imgContainer = document.createElement('div');
   imgContainer.classList.add('gallery');
 
-  const activeImg = document.createElement('img');
-  activeImg.src = images[0];
+  // set the state variable
+  const image = document.createElement('img');
+  // default image to display is the first one in the array
+  image.src = IMAGES[0];
+  image.id = IMAGE_ID;
 
-  imgContainer.append(activeImg);
+  imgContainer.append(image);
 
   const btnContainer = document.createElement('div');
   btnContainer.classList.add('buttons');
@@ -44,7 +40,8 @@ createGallery = () => {
   const imageBtnContainer = document.createElement('div');
   imageBtnContainer.classList.add('image-btn-container');
 
-  for (let i = 0; i < images.length; i++) {
+  // create circles for each image in gallery
+  for (let i = 0; i < IMAGES.length; i++) {
     const imageBtn = document.createElement('div');
     imageBtn.classList.add('btn');
     if (i === 0) {
@@ -52,7 +49,7 @@ createGallery = () => {
     }
     imageBtnContainer.append(imageBtn);
     imageBtn.addEventListener('click', () => {
-      if (_currentIndex !== i) {
+      if (getCurrentIndex() !== i) {
         switchImage(i);
       }
     });
@@ -65,39 +62,41 @@ createGallery = () => {
 
   parent.append(galleryContainer);
 
-  _activeImage = activeImg;
-
   prevBtn.addEventListener('click', () => {
-    const newIndex = (_currentIndex === 0) ? images.length - 1 : _currentIndex - 1;
+    const currentIndex = getCurrentIndex();
+    const newIndex = (currentIndex === 0) ? IMAGES.length - 1 : currentIndex - 1;
     switchImage(newIndex);
   });
   
   nextBtn.addEventListener('click', () => {
-    const newIndex = (_currentIndex === images.length - 1) ? 0 : _currentIndex + 1;
+    const currentIndex = getCurrentIndex();
+    const newIndex = (currentIndex === IMAGES.length - 1) ? 0 : currentIndex + 1;
     switchImage(newIndex);
   });
 
-  _activeImage.addEventListener('transitionend', () => {
-    if (_activeImage.style.opacity === '0') {
-      _activeImage.src = images[_currentIndex];
-      _activeImage.style.opacity = '1';
+  // handle necessary state changes after transition animations finish
+  image.addEventListener('transitionend', () => {
+    const image = getImage();
+    if (image.style.opacity === '0') {
+      image.src = IMAGES[getCurrentIndex()];
+      image.style.opacity = '1';
     }
     else {
-      _isAnimating = false;
+      image.style.transition = null;
     }
   });
-
 }
 
+// switches the image to be viewed
 function switchImage(newIndex) {
-  if (_isAnimating) {
+  if (isAnimating()) {
     return;
   }
-  _isAnimating = true;
-  _currentIndex = newIndex;
-  _activeImage.style.transition = 'opacity 0.3s';
+  const image = getImage();
+  image.style.transition = TRANSITION;
   const nodes = document.getElementsByClassName('btn');
   let i = 0;
+  // update image bubble style
   for (const node of nodes) {
     if (i === newIndex) {
       node.classList.add('selected');
@@ -107,5 +106,25 @@ function switchImage(newIndex) {
     }
     i++;
   }
-  _activeImage.style.opacity = '0';
+  image.style.opacity = '0';
+}
+
+getCurrentIndex = () => {
+  const nodes = document.getElementsByClassName('btn');
+  let i = 0;
+  for (const node of nodes) {
+    if (node.classList.contains('selected')) {
+      return i;
+    }
+    i++;
+  };
+  return i;
+}
+
+getImage = () => {
+  return document.getElementById(IMAGE_ID);
+}
+
+isAnimating = () => {
+  return getImage().style.transition === TRANSITION;
 }

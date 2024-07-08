@@ -24,3 +24,11 @@ const FAQ  = {
     `Tallow is very shelf-stable when properly stored. We recommend storing your tallow in an air-tight container away from light and heat. Doing so should make your tallow last for up to a year, though you'll probably finish the jar long before then. 😊`,
   ]
 }
+
+const IMAGES = [
+  "./images/photo-3.jpeg",
+  "./images/photo-2.jpeg",
+  "./images/photo-1.jpeg",
+  "./images/product-1.jpeg",
+  "./images/product-2.jpeg",
+];
