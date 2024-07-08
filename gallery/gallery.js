@@ -93,7 +93,7 @@ function switchImage(newIndex) {
   _activeImage.src = images[_currentIndex];
   _currentIndex = newIndex;
 
-  _activeImage.style.transition = 'opacity 0.1s';
+  _activeImage.style.transition = 'opacity 0.3s';
 
   const nodes = document.getElementsByClassName('btn');
   let i = 0;
