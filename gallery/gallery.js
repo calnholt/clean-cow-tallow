@@ -6,9 +6,9 @@ const images = [
   "./images/product-2.jpeg",
 ];
 
-let currentIndex = 0;
-let isAnimating = false;
-let activeImage;
+let _currentIndex = 0;
+let _isAnimating = false;
+let _activeImage;
 
 createGallery = () => {
   const parent = document.getElementById('gallery');
@@ -52,7 +52,7 @@ createGallery = () => {
     }
     imageBtnContainer.append(imageBtn);
     imageBtn.addEventListener('click', () => {
-      if (currentIndex !== i) {
+      if (_currentIndex !== i) {
         switchImage(i);
       }
     });
@@ -65,30 +65,35 @@ createGallery = () => {
 
   parent.append(galleryContainer);
 
-  activeImage = activeImg;
+  _activeImage = activeImg;
 
   prevBtn.addEventListener('click', () => {
-    if (isAnimating) {
-        return;
-    }
-    const newIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+    const newIndex = (_currentIndex === 0) ? images.length - 1 : _currentIndex - 1;
     switchImage(newIndex);
   });
   
   nextBtn.addEventListener('click', () => {
-    if (isAnimating) {
-        return;
-    }
-    const newIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+    const newIndex = (_currentIndex === images.length - 1) ? 0 : _currentIndex + 1;
     switchImage(newIndex);
   });
+
+  _activeImage.addEventListener('transitionend', () => {
+    _isAnimating = _activeImage.style.opacity === '0';
+    _activeImage.src = images[_currentIndex];
+    _activeImage.style.opacity = '1';
+  })
+
 }
 
 function switchImage(newIndex) {
-  isAnimating = true;
-  activeImage.src = images[currentIndex];
+  if (_isAnimating) {
+    return;
+  }
+  _isAnimating = true;
+  _activeImage.src = images[_currentIndex];
+  _currentIndex = newIndex;
 
-  activeImage.style.transition = 'opacity 0.3s';
+  _activeImage.style.transition = 'opacity 0.1s';
 
   const nodes = document.getElementsByClassName('btn');
   let i = 0;
@@ -101,14 +106,5 @@ function switchImage(newIndex) {
     }
     i++;
   }
-
-  activeImage.style.opacity = '0';
-
-  setTimeout(() => {
-    activeImage.src = images[newIndex];
-    activeImage.style.opacity = '1';
-    currentIndex = newIndex;
-    isAnimating = false;
-  }, 200);
-
+  _activeImage.style.opacity = '0';
 }
