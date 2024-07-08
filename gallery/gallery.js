@@ -48,6 +48,7 @@ createGallery = (IMAGES) => {
       imageBtn.classList.add('selected');
     }
     imageBtnContainer.append(imageBtn);
+    // handlers for choosing specific image index
     imageBtn.addEventListener('click', () => {
       if (getCurrentIndex() !== i) {
         switchImage(i);
@@ -88,7 +89,7 @@ createGallery = (IMAGES) => {
 }
 
 // switches the image to be viewed
-function switchImage(newIndex) {
+switchImage = (newIndex) => {
   if (isAnimating()) {
     return;
   }

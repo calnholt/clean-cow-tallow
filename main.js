@@ -1,20 +1,28 @@
-function main() {
-    window.addEventListener('scroll', function () {
-        const header = document.getElementsByClassName('logo')[0];
-        if (window.scrollY > 220) {
-            header.classList.add('shrink');
-        } else {
-            header.classList.remove('shrink');
-        }
-    });
+const INSTAGRAM_URL = 'https://www.instagram.com/cleancowtallow?igsh=cXZiMjMxb2p0MTc%3D&utm_source=qr';
+const ETSY_URL = 'http://cleancowtallow.etsy.com/';
+const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61562362583371';
+
+main = () => {
+	setHeaderScrollEvent();
 }
 
-function goToInstagram() {
-    window.open('https://www.instagram.com/cleancowtallow?igsh=cXZiMjMxb2p0MTc%3D&utm_source=qr', '_blank').focus();
+setHeaderScrollEvent = () => {
+	window.addEventListener('scroll', () => {
+		const header = document.getElementsByClassName('logo')[0];
+		if (window.scrollY > 220) {
+			header.classList.add('shrink');
+		} else {
+			header.classList.remove('shrink');
+		}
+	});
 }
-function goToEtsy() {
-    window.open('http://cleancowtallow.etsy.com/', '_blank').focus();
+
+goToInstagram = () => {
+	window.open(INSTAGRAM_URL, '_blank').focus();
 }
-function goToFacebook() {
-    window.open('https://www.facebook.com/profile.php?id=61562362583371', '_blank').focus();
+goToEtsy = () => {
+	window.open(ETSY_URL, '_blank').focus();
+}
+goToFacebook = () => {
+	window.open(FACEBOOK_URL, '_blank').focus();
 }

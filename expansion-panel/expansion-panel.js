@@ -1,13 +1,17 @@
+// creates the expansion panel element
 createExpansionPanel = (title, titles, contents) => {
   const parent = document.getElementById('expansion-panel');
   if (!parent) {
-    console.error('cannot find required element with id "gallery"');
+    console.error('cannot find required element with id "expansion-panel"');
     return;
   }
-  const titleContainer = document.createElement('h1');
-  titleContainer.textContent = title;
-  titleContainer.style.textAlign = 'center';
-  parent.append(titleContainer);
+  // add title if present
+  if (title) {
+    const titleContainer = document.createElement('h1');
+    titleContainer.textContent = title;
+    titleContainer.style.textAlign = 'center';
+    parent.append(titleContainer);
+  }
   titles.forEach((title, i) => {
     const expContainer = document.createElement('div');
     expContainer.classList.add('panel');
@@ -26,19 +30,20 @@ createExpansionPanel = (title, titles, contents) => {
     parent.append(expContainer);
 
     header.onclick = togglePanelHeader;
-    content.onclick = togglePanelContent;
+    content.onclick = closePanelContent;
   });
 }
 
-function togglePanelHeader(event) {
+togglePanelHeader = (event) => {
   const panelContent = event.target.nextElementSibling;
+  // determine if the panel is being opened or closed
   const isOpen = panelContent.classList.contains('open');
   const nodes = document.getElementsByClassName('panel-content');
+  // close all open panels
   for (const node of nodes) {
     node.classList.remove('open');
     node.style.maxHeight = null;
   }
-  
   if (isOpen) {
       panelContent.style.maxHeight = null;
       panelContent.classList.remove('open');
@@ -48,7 +53,7 @@ function togglePanelHeader(event) {
   }
 }
 
-function togglePanelContent(event) {
+closePanelContent = (event) => {
   const panelContent = event.target;
   panelContent.style.maxHeight = null;
   panelContent.classList.remove('open');
