@@ -1,5 +1,5 @@
 const IMAGE_ID = 'gallery-image';
-const TRANSITION = 'opacity 0.5s';
+const TRANSITION = 'opacity 0.2s';
 
 // creates the gallery element
 createGallery = (IMAGES) => {
