@@ -22,6 +22,7 @@ createGallery = (IMAGES) => {
   // default image to display is the first one in the array
   image.src = IMAGES[0];
   image.id = IMAGE_ID;
+  image.alt = 'Organic skincare product image';
 
   imgContainer.append(image);
 

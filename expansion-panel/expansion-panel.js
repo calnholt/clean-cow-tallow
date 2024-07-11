@@ -48,6 +48,8 @@ togglePanelHeader = (event) => {
       panelContent.style.maxHeight = null;
       panelContent.classList.remove('open');
       event.target.classList.remove('open');
+      event.target.blur();
+
     } else {
       panelContent.style.maxHeight = panelContent.scrollHeight + "px";
       panelContent.classList.add('open');
