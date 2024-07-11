@@ -5,8 +5,11 @@ body {
   height: fit-content;
   background-color: white;
   background-size: cover;
-  margin-bottom: 100px;
   overflow-x: auto;
+}
+a {
+  color: #498600;
+  font-weight: 900;
 }
 #logo {
   display: flex;
@@ -119,6 +122,20 @@ body {
 }
 .header-spacer {
   height: 280px;
+}
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: black solid 2px;
+  height: 200px;
+  padding-bottom: 60px;
+  margin-top: 30px;
+  flex-direction: column;
+}
+#footer a {
+  margin-bottom: 20px;
+  letter-spacing: 0.6px;
 }
 /* iphone (?) */
 @media (max-width: 899px) {
