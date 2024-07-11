@@ -47,9 +47,11 @@ togglePanelHeader = (event) => {
   if (isOpen) {
       panelContent.style.maxHeight = null;
       panelContent.classList.remove('open');
-  } else {
+      event.target.classList.remove('open');
+    } else {
       panelContent.style.maxHeight = panelContent.scrollHeight + "px";
       panelContent.classList.add('open');
+      event.target.classList.add('open');
   }
 }
 
@@ -57,4 +59,5 @@ closePanelContent = (event) => {
   const panelContent = event.target;
   panelContent.style.maxHeight = null;
   panelContent.classList.remove('open');
+  event.target.previousElementSibling.classList.remove('open');
 }

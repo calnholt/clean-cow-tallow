@@ -12,6 +12,9 @@
   font-size: 18px;
   transition: background-color 0.1s ease-in-out;
 }
+#expansion-panel .panel-header.open {
+  background-color: white;
+}
 #expansion-panel .panel-header:hover {
   background-color: white;
 }
