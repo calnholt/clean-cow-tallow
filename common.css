@@ -132,11 +132,11 @@ a {
   padding-bottom: 60px;
   margin-top: 30px;
   flex-direction: column;
+  background-color: #efefef;
 }
 #footer a {
   margin-bottom: 20px;
   letter-spacing: 0.6px;
-  background-color: #efefef;
 }
 /* iphone (?) */
 @media (max-width: 899px) {
